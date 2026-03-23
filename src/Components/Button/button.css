@@ -1,4 +1,21 @@
-.button-custom{
-    background-color: red;
-    width: 100%;
+.button-custom {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, transform 0.1s;
+    flex-shrink: 0;
+}
+
+.button-custom:hover {
+    background-color: #2563eb;
+}
+
+.button-custom:active {
+    transform: scale(0.97);
 }

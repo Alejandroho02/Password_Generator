@@ -22,25 +22,30 @@ export const App = () => {
     return (
         <section className='section-app'>
             <h1>{t("title")}</h1>
+            <div className="section-app-head-content">
             <Input
                 value={password}
                 ref={inputRef}
 
             />
-            <div>
                 <Button onClick={handleGeneratorPassword}>{t("buttons.generate")}</Button>
                 <Button onClick={handleCopyText}>{t("buttons.copy")}</Button>
             </div>
-            <div>
-                <button onClick={() => handleLength(false)}>-</button>
-                <input 
-                value={long} onChange={(e) => {
-                    const value = e.target.valueAsNumber;
-                    setLong(isNaN(value) ? 0 : value);
-                }} 
-                
-                type="number" />
-                <button onClick={() => handleLength(true)}>+</button>
+            <div className="length-section">
+                <p className="length-label">{t("amount_characters")}</p>
+                <div className="length-controls">
+                    <button className="length-btn" onClick={() => handleLength(false)}>−</button>
+                    <input
+                        className="length-input"
+                        value={long}
+                        onChange={(e) => {
+                            const value = e.target.valueAsNumber;
+                            setLong(value);
+                        }}
+                        type="number"
+                    />
+                    <button className="length-btn" onClick={() => handleLength(true)}>+</button>
+                </div>
             </div>
             {renderOptions.map((item) => (
                 <div className="container-options" key={item.label}>

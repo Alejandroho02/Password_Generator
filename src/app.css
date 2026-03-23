@@ -1,17 +1,98 @@
-.section-app{
+.section-app {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid white;
-    padding: 3vw;
-    border-radius: 16px;
-
+    gap: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 560px;
+    background-color: rgba(255, 255, 255, 0.04);
 }
-.container-options{
+
+.section-app h1 {
+    margin: 0;
+}
+
+.section-app-head-content {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+}
+
+.length-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.length-label {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.length-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.length-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.length-btn:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.length-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+}
+
+.length-input::-webkit-inner-spin-button,
+.length-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container-options {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 10px;
     justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.container-options:last-child {
+    border-bottom: none;
+}
+
+.container-options p {
+    margin: 0;
+    font-size: 0.95rem;
 }

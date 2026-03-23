@@ -8,11 +8,11 @@ export const useGeneratorPassword = () =>  {
 
     const [hasnumber, sethasnumber] = useState(false)
     
-    const [long, setLong] = useState(0)
+    const [long, setLong] = useState(10)
 
-    const [letterMay, setletterMay] = useState(false)
+    const [letterMay, setletterMay] = useState(true)
 
-    const [letterMin, setletterMin] = useState(false)
+    const [letterMin, setletterMin] = useState(true)
 
     const [specialCharacters, setspecialCharacters] = useState(false)
 
@@ -27,16 +27,44 @@ export const useGeneratorPassword = () =>  {
     
 
     const handleGeneratorPassword = () => {
+        if (long === 0) return;
 
+        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowercase = "abcdefghijklmnopqrstuvwxyz";
+        const numbers = "0123456789";
+        const special = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-        if(hasnumber === true && letterMay === true && letterMin === true && specialCharacters === true){
-            setpassword("sdknasdljasn")
-            
-        }else{
-            setpassword("holaa")
+        let charset = "";
+        const guaranteed: string[] = [];
+
+        if (letterMay) {
+            charset += uppercase;
+            guaranteed.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
         }
-        console.log(password)
+        if (letterMin) {
+            charset += lowercase;
+            guaranteed.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+        }
+        if (hasnumber) {
+            charset += numbers;
+            guaranteed.push(numbers[Math.floor(Math.random() * numbers.length)]);
+        }
+        if (specialCharacters) {
+            charset += special;
+            guaranteed.push(special[Math.floor(Math.random() * special.length)]);
+        }
 
+        if (charset === "") return;
+
+        const remaining = Array.from({ length: long - guaranteed.length }, () =>
+            charset[Math.floor(Math.random() * charset.length)]
+        );
+
+        const combined = [...guaranteed, ...remaining]
+            .sort(() => Math.random() - 0.5)
+            .join("");
+
+        setpassword(combined);
     }
 
     const handleCopyText = () =>{
@@ -48,7 +76,7 @@ export const useGeneratorPassword = () =>  {
     const renderOptions = [
         {label: "options.hasupper", active: letterMay , onChange: setletterMay},
         {label: "options.haslower", active: letterMin , onChange: setletterMin},
-        {label: "options.hasspecialcharacteres", active: specialCharacters , onChange: setspecialCharacters},
+        {label: "options.hasspecialcharacters", active: specialCharacters , onChange: setspecialCharacters},
         {label: "options.hasnumbers", active: hasnumber , onChange: sethasnumber}
 
     ]
